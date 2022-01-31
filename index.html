@@ -4,7 +4,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Vòng quay lì xì 2021 </title>
+    <title>Vòng quay lì xì 2022 </title>
     <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Francois+One&amp;display=swap'>
     <link rel='stylesheet' href='css/sweetalert.css'>
     <link rel='stylesheet' href='css/custom.css'>
@@ -19,8 +19,8 @@
 </div>
 
 <body onload="nhappass()">
-    
-    
+
+
 
     <div id="caidat">
         <img id="popup" src="img/popup.jpg" />
@@ -40,31 +40,43 @@
     </div>
 
     <div class="vongquay">
-        <canvas id="canvas" width="450" height="450" data-responsiveMinWidth="180" data-responsiveScaleHeight="true" data-responsiveMargin="50">
-         </canvas>
+        <canvas id="canvas" width="450" height="450" data-responsiveMinWidth="180" data-responsiveScaleHeight="true"
+            data-responsiveMargin="50">
+        </canvas>
         <div id="batdauquay" class="nutbatdau"></div>
         <div onClick="startSpin();" class="nutquay"></div>
     </div>
 
     <img class="responsive2" style="position:fixed;z-index:99;top:0px;right:0px" src="img/hea1.png" />
-    <div style="position:fixed;z-index:99;bottom:-50px;left:0;width:100%;height:500px;background:url(img/bot1.png) repeat-x bottom left;"></div>
+    <div
+        style="position:fixed;z-index:99;bottom:-50px;left:0;width:100%;height:500px;background:url(img/bot1.png) repeat-x bottom left;">
+    </div>
     <img class="responsive3" style="position:fixed;z-index:99;bottom:20px;left:20px" src="img/bot2.png" />
     <div class="nutcaidat" style="position:fixed;bottom:0px;left:20px" onClick="mopopup()"></div>
-    <input type="range" id="manhornhe" style="position:fixed;bottom:2px;right:20px;z-index: 999" onchange="laypower()" min="5" step="0.01" max="20" value="13">
+    <input type="range" id="manhornhe" style="position:fixed;bottom:2px;right:20px;z-index: 999" onchange="laypower()"
+        min="5" step="0.01" max="20" value="13">
 
     <img style="position:fixed;z-index:99;top:2px;left:1px" src="img/banglixi.png" />
     <div id="annhantien" style="display: none;">
-        <img class="buttonnhantien" style="position:fixed;z-index:99;top:153px;left:1px;cursor: pointer;" src="img/nhantien.png" onclick="nhantien()" />
+        <img class="buttonnhantien" style="position:fixed;z-index:99;top:153px;left:1px;cursor: pointer;"
+            src="img/nhantien.png" onclick="nhantien()" />
         <img style="position:fixed;z-index:99;top:183px;left:24px;" src="img/muiten.gif" />
     </div>
 
-    <div style="position:fixed;z-index:999;top:37px;left:40px;text-shadow: 2px 2px 5px #f7ff29;color: #f2f4be;" id="xuatluotquay"></div>
+    <div style="position:fixed;z-index:999;top:37px;left:40px;text-shadow: 2px 2px 5px #f7ff29;color: #f2f4be;"
+        id="xuatluotquay"></div>
 
     <img style="position:fixed;z-index:999;top:105px;left:9px" id="xuatsotien"></img>
 
-    <audio id="votay"><source src="sound/votay.mp3" type="audio/mpeg"></audio>
-    <audio id="matluot"><source src="sound/matluot.mp3" type="audio/mpeg"></audio>
-    <audio id="dangquay"><source src="sound/dangquay.mp3" type="audio/mpeg"></audio>
+    <audio id="votay">
+        <source src="sound/votay.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="matluot">
+        <source src="sound/matluot.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="dangquay">
+        <source src="sound/dangquay.mp3" type="audio/mpeg">
+    </audio>
 
 </body>
 <script>
@@ -73,25 +85,25 @@
     // Sau khi load trang sẽ yêu cầu nhập mật khẩu
     function nhappass() {
         swal({
-                title: "Vòng quay bị khoá!",
-                text: "Nhập mật khẩu để mở khoá vòng quay:",
-                type: "input",
-                showCancelButton: false, // Có hiển thị nút cancel không(true = có)
-                closeOnConfirm: false, // Có thể tắt popup khi nhấp Ok không (true = có)
-                showLoaderOnConfirm: true, // Hiển thị loading khi nhấp vào nút Ok
-                animation: "slide-from-top", // Như tên của nó, popup sẽ slide from top
-                inputPlaceholder: "Nhập mật khẩu..."
-            },
-            function(inputValue) {
+            title: "Vòng quay bị khoá!",
+            text: "Nhập mật khẩu để mở khoá vòng quay:",
+            type: "input",
+            showCancelButton: false, // Có hiển thị nút cancel không(true = có)
+            closeOnConfirm: false, // Có thể tắt popup khi nhấp Ok không (true = có)
+            showLoaderOnConfirm: true, // Hiển thị loading khi nhấp vào nút Ok
+            animation: "slide-from-top", // Như tên của nó, popup sẽ slide from top
+            inputPlaceholder: "Nhập mật khẩu..."
+        },
+            function (inputValue) {
                 if (inputValue === false) return false;
 
                 if (inputValue !== matkhau) {
-                    setTimeout(function() {
+                    setTimeout(function () {
                         swal.showInputError("Mật khẩu sai, vui lòng nhập lại!");
                     }, 2000);
                     return false
                 }
-                setTimeout(function() {
+                setTimeout(function () {
                     swal("Mở khoá thành công!", "Hãy đưa chiếc điện thoại cho người muốn nhận lì xì nào!", "success");
                 }, 2000);
             });
@@ -106,34 +118,34 @@
     }
 
     $(".buttontatpopup").hover(
-        function() {
+        function () {
             $("#popup").attr("src", 'img/popup2.jpg');
         },
-        function() {
+        function () {
             $("#popup").attr("src", 'img/popup.jpg');
         }
     );
     $(".buttonlammoi").hover(
-        function() {
+        function () {
             $("#popup").attr("src", 'img/popup1.png');
         },
-        function() {
+        function () {
             $("#popup").attr("src", 'img/popup.jpg');
         }
     );
     $(".buttonnhantien").hover(
-        function() {
+        function () {
             $(".buttonnhantien").attr("src", 'img/nhantienhover.png');
         },
-        function() {
+        function () {
             $(".buttonnhantien").attr("src", 'img/nhantien.png');
         }
     );
     $(".lammoipopupnhantien").hover(
-        function() {
+        function () {
             $("#popuptien").attr("src", 'img/popupnhantienhover.png');
         },
-        function() {
+        function () {
             $("#popuptien").attr("src", 'img/popupnhantien.png');
         }
     );
@@ -153,25 +165,25 @@
             'textFillStyle': '#ffffff'
         }, {
             'fillStyle': '#ab6f03',
-            'text': '1.000 VNĐ',
+            'text': '20.000 VNĐ',
             'size': winwheelPercentToDegrees(20),
             'textFontSize': 28,
             'textFillStyle': '#ffffff'
         }, {
             'fillStyle': '#910f06',
-            'text': '2.000 VNĐ',
+            'text': '50.000 VNĐ',
             'size': winwheelPercentToDegrees(15),
             'textFontSize': 26,
             'textFillStyle': '#ffffff'
         }, {
             'fillStyle': '#ab6f03',
-            'text': '5.000 VNĐ',
+            'text': '100.000 VNĐ',
             'size': winwheelPercentToDegrees(15),
             'textFontSize': 24,
             'textFillStyle': '#ffffff'
         }, {
             'fillStyle': '#910f06',
-            'text': '10.000 VNĐ',
+            'text': '200.000 VNĐ',
             'size': winwheelPercentToDegrees(12),
             'textFontSize': 22,
             'textFillStyle': '#ffffff'
@@ -276,25 +288,25 @@
     // -------------------------------------------------------
     function lammoi() {
         swal({
-                title: "Làm mới vòng quay!",
-                text: "Làm mới vòng quay sẽ xoá hết các vòng quay còn lại. \nLịch sử và tổng tiền lì xì vẫn giữ nguyên. \nChú ý nếu tải lại trang sẽ làm mất lịch sử và tổng tiền lì xì\nNhập mật khẩu để tiếp tục:",
-                type: "input",
-                showCancelButton: true, // Có hiển thị nút cancel không(true = có)
-                closeOnConfirm: false, // Có thể tắt popup khi nhấp Ok không (true = có)
-                showLoaderOnConfirm: true, // Hiển thị loading khi nhấp vào nút Ok
-                animation: "slide-from-top", // Như tên của nó, popup sẽ slide from top
-                inputPlaceholder: "Nhập mật khẩu..."
-            },
-            function(inputValue) {
+            title: "Làm mới vòng quay!",
+            text: "Làm mới vòng quay sẽ xoá hết các vòng quay còn lại. \nLịch sử và tổng tiền lì xì vẫn giữ nguyên. \nChú ý nếu tải lại trang sẽ làm mất lịch sử và tổng tiền lì xì\nNhập mật khẩu để tiếp tục:",
+            type: "input",
+            showCancelButton: true, // Có hiển thị nút cancel không(true = có)
+            closeOnConfirm: false, // Có thể tắt popup khi nhấp Ok không (true = có)
+            showLoaderOnConfirm: true, // Hiển thị loading khi nhấp vào nút Ok
+            animation: "slide-from-top", // Như tên của nó, popup sẽ slide from top
+            inputPlaceholder: "Nhập mật khẩu..."
+        },
+            function (inputValue) {
                 if (inputValue === false) return false;
 
                 if (inputValue !== matkhau) {
-                    setTimeout(function() {
+                    setTimeout(function () {
                         swal.showInputError("Mật khẩu sai, vui lòng nhập lại!");
                     }, 2000);
                     return false
                 }
-                setTimeout(function() {
+                setTimeout(function () {
                     swal("Làm mới thành công!", "Hãy đưa chiếc điện thoại cho người muốn nhận lì xì nào!", "success");
 
                     document.getElementById("popupnhantien").style.display = "none"; // Tắt popup nhận tiền
